@@ -1,0 +1,29 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: auth-jwt-devise_development
+  username: aniket
+  password: aniket
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  database: auth-jwt-devise_test
+  username: aniket
+  password: aniket
+  host: localhost
+  port: 5432
+
+  production:
+    url: <%= ENV['DATABASE_URL'] %>
+
+# production:
+#   <<: *default
+#   database: auth-jwt-devise_production
+#   username: auth-jwt-devise
+#   password: <%= ENV['AUTH-JWT-DEVISE_DATABASE_PASSWORD'] %>
